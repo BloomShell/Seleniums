@@ -63,7 +63,7 @@ if __name__ == "__main__":
             time.sleep(10)
 
         # Last page, observations <= 100, min_rows = 1.
-        table = wd.get_table("div", {"id": "fin-scr-res-table"},
+        table = wd.get_table("div", {"id": "scr-res-table"},
                              exclude=["span"], min_rows=1)
         results.append(table)
         t1 = time.time()
