@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 from base import Webdriver
 import pandas as pd
 load_dotenv()
+import pickle
 import math
 import json
 import time
@@ -12,13 +13,13 @@ import os
 if __name__ == "__main__":
 
     xpaths = json.load(open("xpaths.json"))
+    wd = Webdriver(driver_path="../chromedriver.exe", headless=False)
 
     for exchange in xpaths:
 
         t0 = time.time()
         print(f"Starting... Exchange: {exchange}")
 
-        wd = Webdriver(driver_path="../chromedriver.exe", headless=False)
         wd.goto("https://finance.yahoo.com/screener/new")
         wd.click(os.getenv("ACCEPT_PRIVACY_BUTTON"))
 
@@ -70,7 +71,8 @@ if __name__ == "__main__":
         print(f"Terminated! time: {round(duration, 2)} second(s).")
 
         # Save to Json...
-        data = pd.concat(results).drop_duplicates('Symbol').set_index('Symbol')
-        with open(f"output/{exchange}.json", "w") as f:
-            json.dump(data, f, indent=2)
+        data = list(pd.concat(results)[["Symbol", "Name"]]\
+                 .drop_duplicates('Symbol').itertuples(index=False, name=None))
+
+        pickle.dump(data, open(f"metadata/{exchange}.bin", "wb"), -1)
         time.sleep(5)
