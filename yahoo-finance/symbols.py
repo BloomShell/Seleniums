@@ -56,7 +56,7 @@ if __name__ == "__main__":
         # Iterate through (n_pages - 1)...
         results = []
         for i in range(n_pages - 1):
-            table = wd.get_table("div", {"id": "fin-scr-res-table"},
+            table = wd.get_table("div", {"id": "scr-res-table"},
                                  exclude=["span"], min_rows=100)
             wd.click(os.getenv("NEXT_PAGE_BUTTON"))
             results.append(table)
