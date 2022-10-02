@@ -1,0 +1,17 @@
+{
+   "NYSE": [
+      "//*[@id=\"dropdown-menu\"]/div/div/ul/li[2]/label/input"
+   ],
+   "NASDAQ": [
+      "//*[@id=\"dropdown-menu\"]/div/div/ul/li[1]/label/input",
+      "//*[@id=\"dropdown-menu\"]/div/div/ul/li[3]/label/input",
+      "//*[@id=\"dropdown-menu\"]/div/div/ul/li[5]/label/input",
+      "//*[@id=\"dropdown-menu\"]/div/div/ul/li[6]/label/input"
+   ],
+   "BSE": [
+      "//*[@id=\"dropdown-menu\"]/div/div/ul/li[7]/label/input"
+   ],
+   "YHD": [
+      "//*[@id=\"dropdown-menu\"]/div/div/ul/li[4]/label/input"
+   ]
+}
